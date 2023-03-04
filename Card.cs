@@ -12,7 +12,23 @@ namespace CMP1903M_A01_2223
         //Value: numbers 1 - 13
         //Suit: numbers 1 - 4
         //The 'set' methods for these properties could have some validation
+
+        public Card(int s, int v)
+        {
+            Suit = s;
+            Value = v;
+        }
+
         public int Value { get; set; }
         public int Suit { get; set; }
+
+        //public string valStr()
+        //{
+        //    return $"{Value} of {Suit}";
+        //}
+
     }
+
+    
+
 }
