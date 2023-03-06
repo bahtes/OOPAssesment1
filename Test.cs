@@ -20,25 +20,28 @@ namespace CMP1903M_A01_2223
 
             Card d = pack.deal();
             
-            string s;
+            string v = aquireValue(d);
+            string s = aquireSuit(d);
 
-            if (d.Suit == 1)
-            {
-                s = "Hearts";
-            }
-            else if (d.Suit == 2)
-            {
-                s = "Diamonds";
-            }
-            else if (d.Suit == 3)
-            {
-                s = "Clubs";
-            }
-            else
-            {
-                s = "Spades";
-            }
+            Console.WriteLine("You got a card \n\n Suit: " + s + "\n Value: " + v + "\n");
+        }
 
+        public void dealMultiple()
+        {
+
+            List<Card> cardList = pack.dealCard(5);
+
+            for(int i = 0; i < cardList.Count; i++)
+            {
+                Console.WriteLine("Suit for card " + i + ": " + aquireSuit(cardList[i]));
+                Console.WriteLine("Value for card " + i + ": " + aquireValue(cardList[i]) + "\n");
+            }
+            
+        }
+
+        public string aquireValue(Card d)
+        {
+            
             string v;
             
             if (d.Value == 1)
@@ -62,11 +65,33 @@ namespace CMP1903M_A01_2223
                 v = d.Value.ToString();
             }
 
-            Console.WriteLine("You got a card \n\n Suit: " + s + "\n Value: " + v + "\n");
+            return v;
+
         }
 
-        public void dealMultiple()
+        public string aquireSuit(Card d)
         {
+
+            string s;
+
+            if (d.Suit == 1)
+            {
+                s = "Hearts";
+            }
+            else if (d.Suit == 2)
+            {
+                s = "Diamonds";
+            }
+            else if (d.Suit == 3)
+            {
+                s = "Clubs";
+            }
+            else
+            {
+                s = "Spades";
+            }
+
+            return s;
 
         }
 

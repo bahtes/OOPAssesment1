@@ -26,7 +26,7 @@ namespace CMP1903M_A01_2223
             }
         }
 
-        public bool shuffleCardPack(int typeOfShuffle)  //FisherYates = 1, 
+        public bool shuffleCardPack(int typeOfShuffle)  //Fisher-Yates = 1, Riffle Shuffle = 2, No Shuffle = 3
         {
             //Shuffles the pack based on the type of shuffle
 
@@ -49,10 +49,20 @@ namespace CMP1903M_A01_2223
                 return true;
 
             }
+            else if (typeOfShuffle == 2)
+            {
+                return true;
+            }
+            else if (typeOfShuffle == 3)
+            {
+                return true;
+            }
             else
             {
+                Console.WriteLine("Incorrect input, not shuffled");
                 return false;
             }
+
 
             
 
@@ -75,20 +85,23 @@ namespace CMP1903M_A01_2223
         public List<Card> dealCard(int amount)
         {
             //Deals the number of cards specified by 'amount'
+
+            List<Card> cards = new List<Card>();
+
             if (pack.Count > amount)
             {
-                List<Card> returns = null;
 
                 while (amount > 0)
                 {
-                    returns.Add(deal());
+                    cards.Add(deal());
+                    amount--;
                 }
-                return returns;
+                return cards;
             }
             else
             {
                 Console.WriteLine("Not enough cards left in the pack");
-                return null;
+                return cards;
             }
         }
     }

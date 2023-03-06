@@ -11,14 +11,8 @@ namespace CMP1903M_A01_2223
         static void Main(string[] args)
         {
             Test test = new Test();
-            int x = 0;
 
-            for(;;)
-            {
-                test.dealOne();
-                x++;
-                Console.WriteLine(x);
-            }
+            test.dealMultiple();
             
         }
     }
