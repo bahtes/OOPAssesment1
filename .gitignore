@@ -3,3 +3,15 @@ app.csproj.nuget.g.props
 app.csproj.nuget.g.targets
 project.assets.json
 project.nuget.cache
+bin/Debug/net7.0/app.pdb
+bin/Debug/net7.0/app.exe
+*.json
+obj/Debug/net7.0/app.AssemblyInfo.cs
+*.cache
+*.dll
+obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs
+obj/Debug/net7.0/app.csproj.FileListAbsolute.txt
+*.editorconfig
+obj/Debug/net7.0/app.GlobalUsings.g.cs
+*.pdb
+*.exe
