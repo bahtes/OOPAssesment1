@@ -10,7 +10,7 @@ namespace CMP1903M_A01_2223
     {
         List<Card> pack;
 
-        public Pack()
+        public Pack()  //Constructor
         {
             pack = new List<Card>();
 
@@ -26,11 +26,11 @@ namespace CMP1903M_A01_2223
             }
         }
 
-        public bool shuffleCardPack(int typeOfShuffle)  //Fisher-Yates = 1, Riffle Shuffle = 2, No Shuffle = 3
+        public bool shuffleCardPack(int typeOfShuffle)  //Fisher-Yates = 1, Riffle Shuffle = 2, No Shuffle = 3  Returns true if shuffle is successful
         {
             //Shuffles the pack based on the type of shuffle
 
-            if (typeOfShuffle == 1)
+            if (typeOfShuffle == 1)  //Fisher-Yates Shuffle
             {
 
                 Random r = new Random();
@@ -49,7 +49,7 @@ namespace CMP1903M_A01_2223
                 return true;
 
             }
-            else if (typeOfShuffle == 2)
+            else if (typeOfShuffle == 2)  //Riffle Shuffle
             {
 
                 List<Card> pack1 = new List<Card>();
@@ -68,11 +68,11 @@ namespace CMP1903M_A01_2223
 
                 return true;
             }
-            else if (typeOfShuffle == 3)
+            else if (typeOfShuffle == 3)  //No Shuffle
             {
                 return true;
             }
-            else
+            else  //Incorrect input
             {
                 Console.WriteLine("Incorrect input, not shuffled");
                 return false;
@@ -86,28 +86,26 @@ namespace CMP1903M_A01_2223
         {
             //Deals one card
 
-            
-
-            try
+            try  //If there are no cards left in the pack, it will return a card with a value of 0 and a suit of 0, this is because you cannot return null due to the fact that the method is returning a card
             { 
                 Card card = pack[0];
                 pack.RemoveAt(0);
                 return card;
             }
-            catch(ArgumentOutOfRangeException)
+            catch(ArgumentOutOfRangeException)  
             {
                 Console.WriteLine("Not enough cards left in the pack\n");
                 Card card = new Card(0, 0);
                 return card;
             }
         }
-        public List<Card> dealCard(int amount)
+        public List<Card> dealCard(int amount)  //Returns a list of cards with the amount specified by the user in the parameter 'amount'
         {
             //Deals the number of cards specified by 'amount'
 
             List<Card> cards = new List<Card>();
 
-            if (pack.Count >= amount)
+            if (pack.Count >= amount)  //If there are enough cards left in the pack
             {
 
                 while (amount > 0)

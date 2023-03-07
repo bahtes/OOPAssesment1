@@ -8,9 +8,9 @@ namespace CMP1903M_A01_2223
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] args)  //Main method
         {
-            Test test = new Test();
+            Test test = new Test();  //Creates a new instance of the Test class
 
             test.shuffle(1);
 

@@ -6,31 +6,32 @@ using System.Threading.Tasks;
 
 namespace CMP1903M_A01_2223
 {
-    class Test
+    class Test  
     {
 
         Pack pack = new Pack();
 
-        public void shuffle(int typeOfShuffle)
+        public void shuffle(int typeOfShuffle)  //Shuffles the pack based on the type of shuffle
         {
-            pack.shuffleCardPack(typeOfShuffle);
+            pack.shuffleCardPack(typeOfShuffle);  
         }
 
-        public void dealOne()
+        public void dealOne()  //Deals one card from the pack
         {
 
             Card d = pack.deal();
 
-            if (d.Suit != 0 || d.Value != 0)
+            if (d.Suit != 0 || d.Value != 0)  //Checks if the card is not a null card
             {
                 string v = aquireValue(d);
                 string s = aquireSuit(d);
 
             Console.WriteLine("You got a card \n\n Suit: " + s + "\n Value: " + v + "\n");
             }
+
         }
 
-        public void dealMultiple(int amount)
+        public void dealMultiple(int amount)  //Deals multiple cards from the pack
         {
 
             List<Card> cardList = pack.dealCard(amount);
@@ -43,7 +44,7 @@ namespace CMP1903M_A01_2223
             
         }
 
-        public string aquireValue(Card d)
+        public string aquireValue(Card d)  //Aquires the value of the card and returns it as a string, eg. 1 = Ace, 11 = Jack, 12 = Queen, 13 = King
         {
             
             string v;
@@ -73,7 +74,7 @@ namespace CMP1903M_A01_2223
 
         }
 
-        public string aquireSuit(Card d)
+        public string aquireSuit(Card d)  //Aquires the suit of the card and returns it as a string, eg. 1 = Hearts, 2 = Diamonds, 3 = Clubs, 4 = Spades
         {
 
             string s;
