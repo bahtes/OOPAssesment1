@@ -8,7 +8,8 @@
 *.pdb
 *.exe
 *.app
-*.csprog
 obj/Debug/net7.0/app.AssemblyInfo.cs
 obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs
 obj/Debug/net7.0/app.GlobalUsings.g.cs
+obj/Debug/net7.0/OOPAssesment1.AssemblyInfo.cs
+obj/Debug/net7.0/OOPAssesment1.GlobalUsings.g.cs
