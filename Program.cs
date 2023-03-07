@@ -12,7 +12,27 @@ namespace CMP1903M_A01_2223
         {
             Test test = new Test();
 
-            test.dealMultiple();
+            test.shuffle(1);
+
+            test.dealOne();
+
+            test.shuffle(2);
+
+            test.dealOne();
+
+            test.shuffle(3);
+
+            test.dealOne();
+
+            test.dealMultiple(52);
+
+            test.dealMultiple(48);
+
+            test.dealOne();
+
+            test.dealOne();
+
+            test.dealMultiple(2);
             
         }
     }

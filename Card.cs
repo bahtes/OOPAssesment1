@@ -22,11 +22,6 @@ namespace CMP1903M_A01_2223
         public int Value { get; set; }
         public int Suit { get; set; }
 
-        //public string valStr()
-        //{
-        //    return $"{Value} of {Suit}";
-        //}
-
     }
 
     

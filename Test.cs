@@ -11,30 +11,34 @@ namespace CMP1903M_A01_2223
 
         Pack pack = new Pack();
 
-        public void dealOne()
+        public void shuffle(int typeOfShuffle)
         {
-            
-            pack.shuffleCardPack(1);
-
-            Console.WriteLine("Pack is randomally shuffled would you like to deal yourself a single card or multiple: \n");
-
-            Card d = pack.deal();
-            
-            string v = aquireValue(d);
-            string s = aquireSuit(d);
-
-            Console.WriteLine("You got a card \n\n Suit: " + s + "\n Value: " + v + "\n");
+            pack.shuffleCardPack(typeOfShuffle);
         }
 
-        public void dealMultiple()
+        public void dealOne()
         {
 
-            List<Card> cardList = pack.dealCard(5);
+            Card d = pack.deal();
+
+            if (d.Suit != 0 || d.Value != 0)
+            {
+                string v = aquireValue(d);
+                string s = aquireSuit(d);
+
+            Console.WriteLine("You got a card \n\n Suit: " + s + "\n Value: " + v + "\n");
+            }
+        }
+
+        public void dealMultiple(int amount)
+        {
+
+            List<Card> cardList = pack.dealCard(amount);
 
             for(int i = 0; i < cardList.Count; i++)
             {
-                Console.WriteLine("Suit for card " + i + ": " + aquireSuit(cardList[i]));
-                Console.WriteLine("Value for card " + i + ": " + aquireValue(cardList[i]) + "\n");
+                Console.WriteLine("Suit for card " + (i + 1) + ": " + aquireSuit(cardList[i]));
+                Console.WriteLine("Value for card " + (i + 1) + ": " + aquireValue(cardList[i]) + "\n");
             }
             
         }

@@ -51,6 +51,21 @@ namespace CMP1903M_A01_2223
             }
             else if (typeOfShuffle == 2)
             {
+
+                List<Card> pack1 = new List<Card>();
+                List<Card> pack2 = new List<Card>();
+
+                pack1 = pack.GetRange(0, (pack.Count / 2));
+                pack2 = pack.GetRange((pack.Count / 2), (pack.Count / 2));
+
+                pack.Clear();
+
+                for( int i = 0; i < pack1.Count; i++)
+                {
+                    pack.Add(pack1[i]);
+                    pack.Add(pack2[i]);
+                }
+
                 return true;
             }
             else if (typeOfShuffle == 3)
@@ -71,16 +86,20 @@ namespace CMP1903M_A01_2223
         {
             //Deals one card
 
-            if (pack.Count == 0)
-            {
-                return null;
-            }
             
-            Card card = pack[0];
-            pack.RemoveAt(0);
-            return card;
 
-
+            try
+            { 
+                Card card = pack[0];
+                pack.RemoveAt(0);
+                return card;
+            }
+            catch(ArgumentOutOfRangeException)
+            {
+                Console.WriteLine("Not enough cards left in the pack\n");
+                Card card = new Card(0, 0);
+                return card;
+            }
         }
         public List<Card> dealCard(int amount)
         {
@@ -88,7 +107,7 @@ namespace CMP1903M_A01_2223
 
             List<Card> cards = new List<Card>();
 
-            if (pack.Count > amount)
+            if (pack.Count >= amount)
             {
 
                 while (amount > 0)
@@ -100,7 +119,7 @@ namespace CMP1903M_A01_2223
             }
             else
             {
-                Console.WriteLine("Not enough cards left in the pack");
+                Console.WriteLine("Not enough cards left in the pack\n");
                 return cards;
             }
         }
