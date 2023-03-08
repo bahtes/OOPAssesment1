@@ -8,11 +8,11 @@ namespace CMP1903M_A01_2223
 {
     class Pack
     {
-        List<Card> pack;
+        public static List<Card> pack = new List<Card>();
 
         public Pack()  //Constructor
         {
-            pack = new List<Card>();
+            
 
             var suits = Enumerable.Range(1, 4).ToList();  //1 = Hearts, 2 = Diamonds, 3 = Clubs, 4 = Spades
             var values = Enumerable.Range(1, 13).ToList();  //1-10 normal values eg.(1 = ace, 2 = 2, 3 = 3...), 11 = Jack, 12 = Queen, 13 = King
@@ -21,68 +21,58 @@ namespace CMP1903M_A01_2223
             {
                 foreach (int value in values)
                 {
-                    pack.Add(new Card(suit, value));
+                    pack.Add(new Card(suit, value));  //Adds a new card to the pack until all suits and values have been added
                 }
             }
         }
 
-        public bool shuffleCardPack(int typeOfShuffle)  //Fisher-Yates = 1, Riffle Shuffle = 2, No Shuffle = 3  Returns true if shuffle is successful
+        public static bool shuffleCardPack(int typeOfShuffle)  //Fisher-Yates = 1, Riffle Shuffle = 2, No Shuffle = 3  Returns true if shuffle is successful
         {
             //Shuffles the pack based on the type of shuffle
 
-            if (typeOfShuffle == 1)  //Fisher-Yates Shuffle
+            switch(typeOfShuffle)
             {
+                case 1:  //Fisher-Yates Shuffle, swaps the position of two random cards in the pack until the pack is shuffled
+                    Random r = new Random();
 
-                Random r = new Random();
+                    int n = pack.Count;
 
-                int n = pack.Count;
+                    while (n > 1)
+                    {
+                        n--;
+                        int i = r.Next(n + 1);
+                        Card card = pack[i];
+                        pack[i] = pack[n];
+                        pack[n] = card;
+                    }
+                    return true;
 
-                while (n > 1)
-                {
-                    n--;
-                    int i = r.Next(n + 1);
-                    Card card = pack[i];
-                    pack[i] = pack[n];
-                    pack[n] = card;
-                }
+                case 2:  //Riffle Shuffle, splits the pack in half and then alternates the cards from each half until the pack is shuffled (Doesn't use any random as it is a perfect riffle shuffle but it is predictable)
+                    List<Card> pack1 = new List<Card>();
+                    List<Card> pack2 = new List<Card>();
 
-                return true;
+                    pack1 = pack.GetRange(0, (pack.Count / 2));
+                    pack2 = pack.GetRange((pack.Count / 2), (pack.Count / 2));
 
+                    pack.Clear();
+
+                    for( int i = 0; i < pack1.Count; i++)
+                    {
+                        pack.Add(pack1[i]);
+                        pack.Add(pack2[i]);
+                    }
+
+                    return true;
+
+                case 3:  //No Shuffle, returns the pack in the same order as it was created
+                    return true;
+                    
+                default:  //If the user inputs an incorrect value for the type of shuffle
+                    return false;
             }
-            else if (typeOfShuffle == 2)  //Riffle Shuffle
-            {
-
-                List<Card> pack1 = new List<Card>();
-                List<Card> pack2 = new List<Card>();
-
-                pack1 = pack.GetRange(0, (pack.Count / 2));
-                pack2 = pack.GetRange((pack.Count / 2), (pack.Count / 2));
-
-                pack.Clear();
-
-                for( int i = 0; i < pack1.Count; i++)
-                {
-                    pack.Add(pack1[i]);
-                    pack.Add(pack2[i]);
-                }
-
-                return true;
-            }
-            else if (typeOfShuffle == 3)  //No Shuffle
-            {
-                return true;
-            }
-            else  //Incorrect input
-            {
-                Console.WriteLine("Incorrect input, not shuffled");
-                return false;
-            }
-
-
-            
 
         }
-        public Card deal()
+        public static Card deal()
         {
             //Deals one card
 
@@ -94,12 +84,11 @@ namespace CMP1903M_A01_2223
             }
             catch(ArgumentOutOfRangeException)  
             {
-                Console.WriteLine("Not enough cards left in the pack\n");
                 Card card = new Card(0, 0);
                 return card;
             }
         }
-        public List<Card> dealCard(int amount)  //Returns a list of cards with the amount specified by the user in the parameter 'amount'
+        public static List<Card> dealCard(int amount)  //Returns a list of cards with the amount specified by the user in the parameter 'amount'
         {
             //Deals the number of cards specified by 'amount'
 
@@ -117,7 +106,6 @@ namespace CMP1903M_A01_2223
             }
             else
             {
-                Console.WriteLine("Not enough cards left in the pack\n");
                 return cards;
             }
         }
