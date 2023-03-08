@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace CMP1903M_A01_2223
 {
-    class Format  
+    class Format  //Format class to format the output of the Pack class into a readable format
     {
 
-        Pack pack = new Pack();
+        Pack pack = new Pack();  //Creates a new instance of the Pack class
 
         public void shuffle(int typeOfShuffle)  //Shuffles the pack based on the type of shuffle
         {

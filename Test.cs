@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace CMP1903M_A01_2223
 {
-    class Test  
+    class Test  //Test class to test all the methods with different inputs
     {
 
-        Format format = new Format();
+        Format format = new Format();  //Creates a new instance of the Format class
 
-        public void run()
+        public void run()  
         {
 
             format.shuffle(1);
