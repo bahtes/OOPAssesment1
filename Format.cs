@@ -4,26 +4,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CMP1903M_A01_2223
+namespace CMP1903M_A02_2223
 {
     class Format  //Format class to format the output of the Pack class into a readable format
     {
 
         Pack pack = new Pack();  //Creates a new instance of the Pack class
 
-        public void shuffle(int typeOfShuffle)  //Shuffles the pack based on the type of shuffle
+        public void newPack()  //Creates a new pack
+        {
+            Pack pack = new Pack();
+            Pack.clearPack();
+            pack = new Pack();
+        }
+
+        public void getPackCount()  //Gets the amount of cards left in the pack
+        {
+            Console.WriteLine("There are " + Pack.count() + " cards left in the pack\n");
+        }
+
+        public void shuffle(int typeOfShuffle, bool Silent)  //Shuffles the pack based on the type of shuffle
         {
             if (Pack.shuffleCardPack(typeOfShuffle))
             {
-                Console.WriteLine("Shuffle successful\n");
+                if (!Silent)
+                {
+                    Console.WriteLine("Pack shuffled\n");
+                }
             }
             else 
             {
-                Console.WriteLine("Shuffle unsuccessful suspected incorrect input\n");
+                if (!Silent)
+                {
+                    Console.WriteLine("Shuffle unsuccessful suspected incorrect input\n");
+                }
             } 
         }
 
-        public void dealOne()  //Deals one card from the pack
+        public string dealOne()  //Deals one card from the pack
         {
 
             Card d = Pack.deal();
@@ -33,36 +51,13 @@ namespace CMP1903M_A01_2223
                 string v = aquireValue(d);
                 string s = aquireSuit(d);
 
-            Console.WriteLine("You got a card \n\n Suit: " + s + "\n Value: " + v + "\n");
+            return s + "," + v;
             }
             else
             {
-                Console.WriteLine("No cards left in the pack\n");
+                return "0";
             }
 
-        }
-
-        public void dealMultiple(int amount)  //Deals multiple cards from the pack
-        {
-
-            List<Card> cardList = Pack.dealCard(amount);
-
-            if (cardList.Count != 0)
-            {
-
-                for(int i = 0; i < cardList.Count; i++)
-                {
-                    Console.WriteLine("Suit for card " + (i + 1) + ": " + aquireSuit(cardList[i]));
-                    Console.WriteLine("Value for card " + (i + 1) + ": " + aquireValue(cardList[i]) + "\n");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Not enough cards left in the pack\n");
-            }
-
-            
-            
         }
 
         public string aquireValue(Card d)  //Aquires the value of the card and returns it as a string, eg. 1 = Ace, 11 = Jack, 12 = Queen, 13 = King

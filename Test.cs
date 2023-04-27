@@ -4,39 +4,61 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CMP1903M_A01_2223
+namespace CMP1903M_A02_2223
 {
     class Test  //Test class to test all the methods with different inputs
     {
 
         Format format = new Format();  //Creates a new instance of the Format class
+        Messages messages = new Messages();  //Creates a new instance of the Welcome class
+        Game game = new Game(); //Creates a new instance of the Game class
 
         public void run()  
         {
+            bool playing = true;
 
-            format.shuffle(1);
+            messages.welcome();
 
-            format.shuffle(10);
+            while(playing)
+            {
+                format.shuffle(1, true);
 
-            format.dealOne();
+                messages.menu();
 
-            format.shuffle(2);
+                string menuInput = Console.ReadLine();
+                messages.nextLn();
 
-            format.dealOne();
+                if (menuInput == "1")
+                {
+                    game.run();
+                }
 
-            format.shuffle(3);
+                if (menuInput == "2")
+                {
+                    messages.instructions();
+                }
 
-            format.dealOne();
+                if (menuInput == "3")
+                {
+                    format.shuffle(1, false);
+                }
 
-            format.dealMultiple(52);
+                if (menuInput == "4")
+                {
+                    format.newPack();
+                }
 
-            format.dealMultiple(48);
+                if (menuInput == "5")
+                {
+                    messages.goodbye();
+                    playing = false;
+                }
 
-            format.dealOne();
-
-            format.dealOne();
-
-            format.dealMultiple(2);
+                if (menuInput != "1" && menuInput != "2" && menuInput != "3" && menuInput != "4" && menuInput != "5")
+                {
+                    Console.WriteLine("Incorrect input");
+                }
+            }
 
         }
 

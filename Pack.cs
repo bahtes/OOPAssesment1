@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CMP1903M_A01_2223
+namespace CMP1903M_A02_2223
 {
+
     class Pack
     {
         public static List<Card> pack = new List<Card>();
@@ -24,6 +25,16 @@ namespace CMP1903M_A01_2223
                     pack.Add(new Card(suit, value));  //Adds a new card to the pack until all suits and values have been added
                 }
             }
+        }
+
+        public static void clearPack()
+        {
+            pack.Clear();  //Clears the pack
+        }
+
+        public static string count()
+        {
+            return(pack.Count.ToString());
         }
 
         public static bool shuffleCardPack(int typeOfShuffle)  //Fisher-Yates = 1, Riffle Shuffle = 2, No Shuffle = 3  Returns true if shuffle is successful
