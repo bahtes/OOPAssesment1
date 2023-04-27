@@ -4,61 +4,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CMP1903M_A02_2223
+namespace CMP1903M_A01_2223
 {
     class Test  //Test class to test all the methods with different inputs
     {
 
         Format format = new Format();  //Creates a new instance of the Format class
-        Messages messages = new Messages();  //Creates a new instance of the Welcome class
-        Game game = new Game(); //Creates a new instance of the Game class
 
         public void run()  
         {
-            bool playing = true;
 
-            messages.welcome();
+            format.shuffle(1);
 
-            while(playing)
-            {
-                format.shuffle(1, true);
+            format.shuffle(10);
 
-                messages.menu();
+            format.dealOne();
 
-                string menuInput = Console.ReadLine();
-                messages.nextLn();
+            format.shuffle(2);
 
-                if (menuInput == "1")
-                {
-                    game.run();
-                }
+            format.dealOne();
 
-                if (menuInput == "2")
-                {
-                    messages.instructions();
-                }
+            format.shuffle(3);
 
-                if (menuInput == "3")
-                {
-                    format.shuffle(1, false);
-                }
+            format.dealOne();
 
-                if (menuInput == "4")
-                {
-                    format.newPack();
-                }
+            format.dealMultiple(52);
 
-                if (menuInput == "5")
-                {
-                    messages.goodbye();
-                    playing = false;
-                }
+            format.dealMultiple(48);
 
-                if (menuInput != "1" && menuInput != "2" && menuInput != "3" && menuInput != "4" && menuInput != "5")
-                {
-                    Console.WriteLine("Incorrect input");
-                }
-            }
+            format.dealOne();
+
+            format.dealOne();
+
+            format.dealMultiple(2);
 
         }
 
